@@ -4,7 +4,7 @@ const About = () => {
 
 
     return (
-        <Box bg="gray" w="100%" height="80vh" position="relative"  display="flex" justifyContent="center">
+        <Box bg="gray" w="100%" height="90vh" position="relative"  display="flex" justifyContent="center">
             <Flex mt="5rem" width="50%" direction="column" align="center">
                 <Heading mb="2rem">Meet the Organizer</Heading>
                 <Box >
@@ -20,7 +20,6 @@ const About = () => {
     )
 
 }
-
 
 
 export default About;
