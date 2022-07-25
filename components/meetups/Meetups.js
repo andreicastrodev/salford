@@ -2,6 +2,7 @@ import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { ImLocation2 } from "react-icons/im";
 import { BsFillCalendarDateFill, BsPeopleFill } from 'react-icons/bs';
 import Image from 'next/image'
+import EventFilter from "./EventFilter";
 const DUMMY_DATA = [{
     id: '1',
     title: 'Microsoft Community',
@@ -36,8 +37,9 @@ const Meetups = () => {
 
     return (
         <Box textAlign="center" bg="gray" w="100%" height="auto" p="3rem" mt="3rem!important">
-            <Heading fontSize="3rem" textAlign="center">Events</Heading>
-            <Flex mt="2rem" justify="space-evenly" flexWrap="wrap">
+            <Heading mb="2rem" fontSize="3rem" textAlign="center">Events</Heading>
+            <EventFilter/>
+            <Flex mt="3rem" justify="space-evenly" flexWrap="wrap">
                 <Box bg="blackAlpha.900" w="35%" p="2rem">
                     <Flex direction="column">
                         <Image src="/images/events-1.jpg"
