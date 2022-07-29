@@ -3,7 +3,7 @@ import { ImLocation2 } from "react-icons/im";
 import { BsFillCalendarDateFill, BsPeopleFill } from 'react-icons/bs';
 import Image from 'next/image'
 import { useRouter } from "next/router";
-const MeetupItem = ({ title, description, address, date, numOfPeople, id }) => {
+const MeetupItem = ({ title, description, address, date, numOfPeople, id, imageUrl }) => {
 
     const router = useRouter();
 
@@ -14,10 +14,13 @@ const MeetupItem = ({ title, description, address, date, numOfPeople, id }) => {
 
     return <GridItem bg="blackAlpha.900" p="2rem">
         <Flex direction="column">
-            <Image src="/images/events-1.jpg"
+            <Image 
+                src={`${imageUrl}`}
+                blurDataURL={`${imageUrl}`}
                 alt="logo"
                 width={320}
                 height={220}
+                placeholder="blur"
             />
             <Heading>{title}</Heading>
             <Text>{description}</Text>

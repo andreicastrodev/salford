@@ -5,6 +5,12 @@ import MeetupItem from "./MeetupItem";
 
 const Meetups = (props) => {
 
+
+
+    if(!props.events){
+        return <Text>No Meetup</Text>
+    }
+
     return (
         <Box textAlign="center" bg="gray" w="100%" height="auto" p="3rem" mt="3rem!important">
             <Heading mb="2rem" fontSize="3rem" textAlign="center">Events</Heading>
@@ -16,6 +22,7 @@ const Meetups = (props) => {
                         date={event.date}
                         numOfPeople={event.numOfPeople}
                         id={event._id}
+                        imageUrl={event.imageUrl}
                         key={event._id}
                     />
                 })}

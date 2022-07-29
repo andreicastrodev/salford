@@ -8,7 +8,7 @@ import { useState } from "react";
 
 
 
-const EventDetails = ({ title, description, address, date, numOfPeople, imageUrl }) => {
+const EventDetails = ({ title, description, address, date, numOfPeople, imageUrl, id, comments }) => {
 
     console.log(imageUrl)
     const [showComments, setShowComments] = useState(false);
@@ -23,7 +23,10 @@ const EventDetails = ({ title, description, address, date, numOfPeople, imageUrl
     return <Flex w="100%" justifyContent="center">
         <Box w="70%" p="2rem">
             <Flex direction="column">
-                <Image src={`/${imageUrl}`}
+                <Image
+                    src={`${imageUrl}`}
+                    blurDataURL={`${imageUrl}`}
+                    placeholder="blur"
                     alt="logo"
                     width={500}
                     height={500}
@@ -49,9 +52,8 @@ const EventDetails = ({ title, description, address, date, numOfPeople, imageUrl
                 <Button onClick={toggleCommentsHandler} alignSelf="center" mt="1rem">Community Comments</Button>
             </Flex>
             {
-                showComments ? <Comments /> : ''
+                showComments ? <Comments comments={comments} id={id} /> : ''
             }
-
         </Box>
     </Flex>
 }

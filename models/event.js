@@ -28,12 +28,18 @@ const eventSchema = new Schema({
         type: String,
         required: true
     },
-    comments: [{
-        comments: {
-            type: String,
-            required: true
-        }
-    }]
+    data: {
+        comments: [{
+            name: {
+                type: String,
+                required: true
+            },
+            comment: {
+                type: String,
+                required: true
+            },
+        }]
+    }
 })
 
 module.exports = models.Event || model('Event', eventSchema)

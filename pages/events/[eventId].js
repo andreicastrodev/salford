@@ -16,6 +16,8 @@ const EventsPage = (props) => {
                 date={props.eventDetails.date}
                 imageUrl={props.eventDetails.imageUrl}
                 numOfPeople={props.eventDetails.numOfPeople}
+                id={props.eventDetails._id}
+                comments={props.eventDetails.data.comments}
             />
         </Box>
 
@@ -46,7 +48,10 @@ export async function getStaticProps(context) {
     console.log(event)
     return {
         // Passed to the page component as props
-        props: { eventDetails: JSON.parse(JSON.stringify(event))  },
+        props: {
+            eventDetails: JSON.parse(JSON.stringify(event)),
+
+        },
     }
 }
 
