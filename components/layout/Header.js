@@ -15,7 +15,7 @@ const Header = () => {
             <Image src="/images/icon-logo.png" alt="logo" width={115} height={115} />
             <UnorderedList listStyleType="none" w="20%" display="flex" justifyContent="space-around">
                 <Link href="/events">Events</Link>
-                <ListItem>About</ListItem>
+                <Link href="/new-event">Add Events</Link>
                 <ListItem>Gallery</ListItem>
             </UnorderedList>
             <Spacer />

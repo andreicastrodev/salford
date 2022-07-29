@@ -1,99 +1,25 @@
-import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
-import { ImLocation2 } from "react-icons/im";
-import { BsFillCalendarDateFill, BsPeopleFill } from 'react-icons/bs';
-import Image from 'next/image'
-import EventFilter from "./EventFilter";
-const DUMMY_DATA = [{
-    id: '1',
-    title: 'Microsoft Community',
-    address: ' 9031 New Ave. Fontana, CA 92335',
-    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
-    numberOfPeople: 50,
-    date: 'July 6 2022',
-    imageUrl: "/images/events-1.jpg"
-},
-{
-    id: '2',
-    title: 'Microsoft Community',
-    address: ' 9031 New Ave. Fontana, CA 92335',
-    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
-    numberOfPeople: 50,
-    date: 'July 6 2022',
-    imageUrl: "/images/events-1.jpg"
-},
-{
-    id: '3',
-    title: 'Microsoft Community',
-    address: ' 9031 New Ave. Fontana, CA 92335',
-    description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
-    numberOfPeople: 50,
-    date: 'July 6 2022',
-    imageUrl: "/images/events-1.jpg"
-},
-]
+import { Box, Button, Grid, Heading, Text } from "@chakra-ui/react";
+
+import MeetupItem from "./MeetupItem";
 
 
-const Meetups = () => {
+const Meetups = (props) => {
 
     return (
         <Box textAlign="center" bg="gray" w="100%" height="auto" p="3rem" mt="3rem!important">
             <Heading mb="2rem" fontSize="3rem" textAlign="center">Events</Heading>
-            <EventFilter/>
-            <Flex mt="3rem" justify="space-evenly" flexWrap="wrap">
-                <Box bg="blackAlpha.900" w="35%" p="2rem">
-                    <Flex direction="column">
-                        <Image src="/images/events-1.jpg"
-                            alt="logo"
-                            width={320}
-                            height={220}
-                        />
-                        <Heading>Microsoft Community Event</Heading>
-                        <Text>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</Text>
-                        <Flex direction="column">
-                            <Flex align="center">
-                                <ImLocation2 />
-                                <Text ml="6px">9031 New Ave. Fontana, CA 92335</Text>
-                            </Flex>
-                            <Flex align="center">
-                                <BsFillCalendarDateFill />
-                                <Text ml="6px">July 20 2022</Text>
-                            </Flex>
-                            <Flex align="center">
-                                <BsPeopleFill />
-                                <Text ml="6px">50</Text>
-                            </Flex>
-                        </Flex>
-                        <Button mt="1rem">Details</Button>
-                    </Flex>
-                </Box>
-                <Box bg="blackAlpha.900" w="35%" p="2rem">
-                    <Flex direction="column">
-                        <Image src="/images/events-1.jpg"
-                            alt="logo"
-                            width={320}
-                            height={220}
-                        />
-                        <Heading>Microsoft Community Event</Heading>
-                        <Text>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</Text>
-                        <Flex direction="column">
-                            <Flex align="center">
-                                <ImLocation2 />
-                                <Text ml="6px">9031 New Ave. Fontana, CA 92335</Text>
-                            </Flex>
-                            <Flex align="center">
-                                <BsFillCalendarDateFill />
-                                <Text ml="6px">July 20 2022</Text>
-                            </Flex>
-                            <Flex align="center">
-                                <BsPeopleFill />
-                                <Text ml="6px">50</Text>
-                            </Flex>
-                        </Flex>
-                        <Button mt="1rem">Details</Button>
-                    </Flex>
-                </Box>
-            </Flex>
-            <Button w="25%" mt="3rem" bg="blackAlpha.900">View All</Button>
+            <Grid mt="3rem" templateColumns='repeat(3, 1fr)' gap={3}>
+                {props.events.map(event => {
+                    return <MeetupItem title={event.title}
+                        address={event.address}
+                        location={event.location}
+                        date={event.date}
+                        numOfPeople={event.numOfPeople}
+                        id={event._id}
+                        key={event._id}
+                    />
+                })}
+            </Grid>
         </Box>
     )
 }

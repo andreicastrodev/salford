@@ -8,8 +8,9 @@ import { useState } from "react";
 
 
 
-const EventDetails = () => {
+const EventDetails = ({ title, description, address, date, numOfPeople, imageUrl }) => {
 
+    console.log(imageUrl)
     const [showComments, setShowComments] = useState(false);
 
 
@@ -22,27 +23,26 @@ const EventDetails = () => {
     return <Flex w="100%" justifyContent="center">
         <Box w="70%" p="2rem">
             <Flex direction="column">
-                <Image src="/images/events-1.jpg"
+                <Image src={`/${imageUrl}`}
                     alt="logo"
                     width={500}
                     height={500}
                     mb="1rem"
                 />
-                <Heading mb="1rem">Microsoft Community Event</Heading>
-                <Text mb="1rem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint omnis vero voluptatibus deserunt ut eaque mollitia odit quis, facilis, dolor quae, provident dolorem.
-                    Laborum facere reiciendis similique repellat, eligendi eius?</Text>
+                <Heading mb="1rem">{title}</Heading>
+                <Text mb="1rem">{description}</Text>
                 <Flex direction="column">
                     <Flex mb="1rem" align="center">
                         <ImLocation2 />
-                        <Text ml="6px">9031 New Ave. Fontana, CA 92335</Text>
+                        <Text ml="6px">{address}</Text>
                     </Flex>
                     <Flex mb="1rem" align="center">
                         <BsFillCalendarDateFill />
-                        <Text ml="6px">July 20 2022</Text>
+                        <Text ml="6px">{date}</Text>
                     </Flex>
                     <Flex align="center">
                         <BsPeopleFill />
-                        <Text ml="6px">50</Text>
+                        <Text ml="6px">{numOfPeople}</Text>
                     </Flex>
                 </Flex>
                 <Modal />

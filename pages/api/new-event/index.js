@@ -10,13 +10,14 @@ export default async function newEvents(req, res) {
 
         await mongoConnect();
 
-        const { title, address, description, date, numOfPeople, comments } = data;
+        const { title, address, description, date, numOfPeople, imageUrl } = data;
 
         const newEvent = await Events.create({
             title,
             address,
             description,
             date,
+            imageUrl,
             numOfPeople
         })
 
