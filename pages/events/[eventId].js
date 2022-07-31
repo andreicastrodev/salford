@@ -1,13 +1,16 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Spinner } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import EventDetails from "../../components/meetups/EventDetails";
 import { getEventById, getEventsData } from "../../utils/Helper";
 
 const EventsPage = (props) => {
 
+    const router = useRouter();
 
-    console.log(props)
+    if (router.isFallback) {
+        return <Spinner size='xl' />
 
+    }
 
     return (
         <Box>
@@ -38,7 +41,7 @@ export async function getStaticPaths() {
                 }
             }
         }),
-        fallback: false, // can also be true or 'blocking'
+        fallback: true, // can also be true or 'blocking'
     }
 }
 

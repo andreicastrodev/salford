@@ -17,7 +17,6 @@ export default async function getEvents(req, res) {
 
         event.data.comments.push({ name, comment });
         const updatedEvent = await event.save();
-        console.log(updatedEvent)
-        return res.json(updatedEvent)
+        return res.json(updatedEvent.data.comments)
     }
 }
