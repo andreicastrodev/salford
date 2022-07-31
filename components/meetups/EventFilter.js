@@ -22,10 +22,15 @@ const EventFilter = ({ filter }) => {
         filter(selectedYear, selectedMonth)
     }
     return <Flex justifyContent="center">
-        <form  >
+        <form  style={{
+            backgroundColor: 'gray',
+            padding: '1rem 5rem',
+            borderRadius: '10px'
+
+        }}>
             <FormControl>
                 <FormLabel>Year</FormLabel>
-                <Select ref={yearRef} placeholder='Select Year'>
+                <Select ref={yearRef} placeholder='Select Year' color="black">
                     <option>2021</option>
                     <option>2022</option>
                 </Select>
@@ -33,7 +38,7 @@ const EventFilter = ({ filter }) => {
             <FormControl>
                 <FormLabel>Month</FormLabel>
 
-                <Select ref={monthRef} placeholder='Select Year'>
+                <Select ref={monthRef} placeholder='Select Month' color="black">
                     <option value="1">Jan</option>
                     <option value="2">Feb</option>
                     <option value="3">Mar</option>

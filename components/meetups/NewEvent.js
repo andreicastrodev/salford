@@ -8,10 +8,10 @@ import {
     Text
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router';
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
+import NotificationContext from '../../store/notification-context';
 const NewEvent = () => {
 
-    const [isLoading, setIsLoading] = useState(false);
     const titleRef = useRef();
     const addressRef = useRef();
     const dateRef = useRef();
@@ -19,10 +19,11 @@ const NewEvent = () => {
     const imageRef = useRef();
     const router = useRouter();
 
+    const notificationCtx = useContext(NotificationContext);
+
     const onSubmitHandler = async (e) => {
         e.preventDefault();
 
-        setIsLoading(true);
         const titleRefValue = titleRef.current.value;
         const addressRefValue = addressRef.current.value;
         const dateRefValue = dateRef.current.value;
@@ -37,22 +38,38 @@ const NewEvent = () => {
             imageUrl: imageRefValue,
             numOfPeople: 0
         }
-        await fetch('http://localhost:3000/api/new-event', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
 
-        setIsLoading(false);
+        try {
+            notificationCtx.showNotification({
+                title: 'New Event',
+                message: 'Adding an event',
+                status: 'pending'
+            })
+            await fetch('http://localhost:3000/api/new-event', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
 
-        router.push('/events');
+            notificationCtx.showNotification({
+                title: 'New Event',
+                message: 'Event Added',
+                status: 'success'
+            })
+            router.push('/events');
+        } catch (error) {
+            notificationCtx.showNotification({
+                title: 'New Event',
+                message: `${error.message}`,
+                status: 'error'
+            })
+        }
 
     }
 
     return <Box w="50%">
-        {isLoading ? <Text fontSize="2rem" textAlign="center">Loading...</Text> : ''}
         <form onSubmit={onSubmitHandler}>
             <FormControl>
                 <FormLabel>Title</FormLabel>

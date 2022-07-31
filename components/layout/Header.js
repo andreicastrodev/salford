@@ -8,16 +8,13 @@ const Header = () => {
         <Flex w="100%" p="1rem" alignItems="center" justifyContent="center">
             <Spacer />
             <UnorderedList listStyleType="none" w="20%" display="flex" justifyContent="space-around">
-                <ListItem>Home</ListItem>
-                <ListItem>About</ListItem>
-                <ListItem>Gallery</ListItem>
+                <ListItem><Link href="/">Home</Link></ListItem>
+
             </UnorderedList>
             <Image src="/images/icon-logo.png" alt="logo" width={115} height={115} />
             <UnorderedList listStyleType="none" w="20%" display="flex" justifyContent="space-around">
-                <Link href="/events">Events</Link>
-                <Link href="/new-event">Add Events</Link>
-                <ListItem>Gallery</ListItem>
-            </UnorderedList>
+                <ListItem><Link href="/events">Events</Link></ListItem>
+                <ListItem><Link href="/new-event">Add Events</Link></ListItem>            </UnorderedList>
             <Spacer />
             <ColorModeSwitcher />
         </Flex>
